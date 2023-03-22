@@ -14,10 +14,6 @@
 			],
 			"sinks": [
 				{
-					"linkedService": {
-						"referenceName": "blobdgunal",
-						"type": "LinkedServiceReference"
-					},
 					"name": "sink1"
 				}
 			],
@@ -40,8 +36,6 @@
 				"source1 filter(Column_5==\"Iris-setosa\") ~> filter1",
 				"filter1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     format: 'json',",
-				"     container: 'blobdgunal',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]

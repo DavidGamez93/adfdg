@@ -48,7 +48,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 filter(Column_5 == \"Iris-versicolor\") ~> filter1",
-				"source1 derive(bussinesRule = iif(toFloat(Column_1)<1,\"Aplica\",\"No Aplica\")) ~> derivedColumn1",
+				"source1 derive(bussinesRule = iif(toFloat(Column_1)<5,\"Aplica\",\"No Aplica\")) ~> derivedColumn1",
 				"filter1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'json',",

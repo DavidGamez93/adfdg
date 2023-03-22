@@ -172,7 +172,7 @@
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false) ~> source1",
 						"source1 filter(Column_5 == \"Iris-versicolor\") ~> filter1",
-						"source1 derive(bussinesRule = iif(toFloat(Column_1)<1,\"Aplica\",\"No Aplica\")) ~> derivedColumn1",
+						"source1 derive(bussinesRule = iif(toFloat(Column_1)<5,\"Aplica\",\"No Aplica\")) ~> derivedColumn1",
 						"filter1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     format: 'json',",
@@ -195,37 +195,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/Iris')]",
 				"[concat(variables('factoryId'), '/linkedServices/blobdgunal')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/trigger1')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "adfEtlIris",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Minute",
-						"interval": 15,
-						"startTime": "2023-03-22T13:54:00Z",
-						"endTime": "2023-03-22T16:55:58Z",
-						"timeZone": "UTC"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/adfEtlIris')]"
 			]
 		}
 	]

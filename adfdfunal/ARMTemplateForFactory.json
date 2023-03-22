@@ -160,7 +160,7 @@
 						"     allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     ignoreNoFilesFound: false) ~> source1",
-						"source1 filter(Column_1>\"0.5\") ~> filter1",
+						"source1 filter(Column_5==\"Iris-setosa\") ~> filter1",
 						"filter1 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     format: 'json',",
